@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🏠 Housewarming Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Great+Vibes&family=Playfair+Display:wght@500;700&family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Playfair Display',serif;
+background:
+linear-gradient(135deg,#14001f,#2b0038,#4a0d67,#12001c);
+background-size:400% 400%;
+animation:bgGradient 15s ease infinite;
+overflow-x:hidden;
+color:white;
+}
+
+@keyframes bgGradient{
+0%{
+background-position:0% 50%;
+}
+50%{
+background-position:100% 50%;
+}
+100%{
+background-position:0% 50%;
+}
+}
+
+/* FLOATING STARS */
+
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+overflow:hidden;
+z-index:-1;
+}
+
+.stars span{
+position:absolute;
+display:block;
+width:4px;
+height:4px;
+background:white;
+border-radius:50%;
+animation:animate 15s linear infinite;
+opacity:0.6;
+}
+
+@keyframes animate{
+0%{
+transform:translateY(100vh) scale(0);
+}
+100%{
+transform:translateY(-10vh) scale(1);
+}
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:40px 20px;
+position:relative;
+overflow:hidden;
+background:
+linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.65)),
+url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1600&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+}
+
+.hero-content{
+animation:fadeUp 2s ease forwards;
+max-width:900px;
+width:100%;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+inset:0;
+background:
+radial-gradient(circle at 25% 20%, rgba(255,255,255,0.18), transparent 18%),
+radial-gradient(circle at 80% 10%, rgba(255,200,30,0.12), transparent 14%);
+pointer-events:none;
+opacity:0.85;
+animation:heroSky 14s ease-in-out infinite;
+}
+
+@keyframes heroSky{
+0%,100%{transform:translate(0,0);}
+50%{transform:translate(8px,6px);}
+}
+
+.hero h1{
+font-family:'Cinzel',serif;
+font-size:5rem;
+font-weight:700;
+letter-spacing:5px;
+background:linear-gradient(to right,#ffd700,#ffb347,#fff2b2);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:0 0 25px rgba(255,215,0,0.5);
+animation:heroTextGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes heroTextGlow{
+0%{text-shadow:0 0 25px rgba(255,215,0,0.5);}
+100%{text-shadow:0 0 35px rgba(255,255,255,0.85);}
+}
+
+.hero h2{
+font-family:'Noto Sans Tamil',sans-serif;
+font-size:2.5rem;
+margin-top:20px;
+color:#ffde59;
+text-shadow:0 0 20px rgba(255,222,89,0.6);
+}
+
+.hero p{
+margin-top:25px;
+font-size:1.2rem;
+line-height:2;
+color:#f5f5f5;
+}
+
+.hero-btn{
+display:inline-block;
+margin-top:40px;
+padding:16px 38px;
+background:linear-gradient(45deg,#ff0080,#ff8c00,#ffd700);
+background-size:300% 300%;
+animation:btnGradient 5s ease infinite, btnPulse 4s ease-in-out infinite;
+border-radius:60px;
+color:white;
+text-decoration:none;
+font-weight:700;
+font-size:1rem;
+box-shadow:0 0 30px rgba(255,140,0,0.6);
+transition:transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.hero-btn:hover{
+transform:scale(1.08);
+box-shadow:0 0 50px rgba(255,140,0,0.75);
+}
+
+@keyframes btnGradient{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+@keyframes btnPulse{
+0%,100%{box-shadow:0 0 30px rgba(255,140,0,0.6);}
+50%{box-shadow:0 0 40px rgba(255,140,0,0.85);}
+}
+
+/* SECTION */
+
+.section{
+padding:80px 6%;
+}
+
+.section-title{
+text-align:center;
+font-size:3.2rem;
+margin-bottom:60px;
+font-family:'Great Vibes',cursive;
+background:linear-gradient(to right,#ffd700,#ff69b4,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.reveal-item{
+transition:opacity .85s ease, transform .85s ease;
+will-change:opacity,transform;
+opacity:0;
+transform:translateY(25px) scale(0.98);
+}
+
+body.animate-scroll .reveal-item.is-visible{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+
+.reveal-item.reveal-left{
+transform:translateX(-18px) scale(0.98);
+}
+
+.reveal-item.reveal-right{
+transform:translateX(18px) scale(0.98);
+}
+
+.reveal-delay-1{
+transition-delay:0.15s;
+}
+
+.reveal-delay-2{
+transition-delay:0.3s;
+}
+
+.reveal-delay-3{
+transition-delay:0.45s;
+}
+
+/* GLASS CARD */
+
+.glass-card{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.2);
+padding:40px 25px;
+border-radius:35px;
+box-shadow:
+0 0 30px rgba(255,105,180,0.25),
+0 0 60px rgba(255,215,0,0.15);
+animation:glassGlow 10s ease-in-out infinite alternate;
+}
+
+@keyframes glassGlow{
+0%{box-shadow:0 0 30px rgba(255,105,180,0.2),0 0 60px rgba(255,215,0,0.1);}
+100%{box-shadow:0 0 40px rgba(255,105,180,0.35),0 0 80px rgba(255,215,0,0.25);}
+}
+
+/* INFO GRID */
+
+.info-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+/* FLIP CARD */
+
+.flip-card{
+background:transparent;
+height:220px;
+perspective:1000px;
+}
+
+.flip-inner{
+position:relative;
+width:100%;
+height:100%;
+transition:transform 1s;
+transform-style:preserve-3d;
+}
+
+.flip-card{
+transition:transform .6s ease, box-shadow .6s ease;
+}
+
+.flip-card:hover{
+transform:translateY(-8px);
+box-shadow:0 18px 40px rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-inner{
+transform:rotateY(180deg);
+}
+
+.flip-front,
+.flip-back{
+position:absolute;
+width:100%;
+height:100%;
+border-radius:25px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+backface-visibility:hidden;
+overflow:hidden;
+}
+
+.flip-front{
+background:
+linear-gradient(135deg,#ff0080,#7928ca,#2afadf);
+background-size:300% 300%;
+animation:cardGradient 6s ease infinite;
+box-shadow:0 10px 35px rgba(255,0,128,0.5);
+}
+
+@keyframes cardGradient{
+0%{
+background-position:0% 50%;
+}
+50%{
+background-position:100% 50%;
+}
+100%{
+background-position:0% 50%;
+}
+}
+
+.flip-front h2{
+font-size:3.5rem;
+margin-bottom:12px;
+}
+
+.flip-front h3{
+font-family:'Cinzel',serif;
+font-size:1.5rem;
+}
+
+.flip-back{
+background:linear-gradient(135deg,#fff5e6,#ffe0f0);
+color:#2b0038;
+transform:rotateY(180deg);
+}
+
+.flip-back h3{
+font-family:'Cinzel',serif;
+font-size:1.5rem;
+color:#ff0080;
+margin-bottom:10px;
+}
+
+/* SPECIAL MESSAGE */
+
+.special-box{
+margin-top:60px;
+text-align:center;
+padding:50px 25px;
+border-radius:35px;
+background:
+linear-gradient(135deg,
+rgba(255,215,0,0.1),
+rgba(255,0,128,0.12),
+rgba(42,250,223,0.1));
+backdrop-filter:blur(18px);
+animation:specialGlow 4s infinite alternate;
+}
+
+.special-box h2{
+font-family:'Great Vibes',cursive;
+font-size:2.8rem;
+color:#ffd700;
+}
+
+.special-box h1{
+font-family:'Cinzel',serif;
+font-size:3.5rem;
+margin-top:20px;
+background:linear-gradient(to right,#ffd700,#ff69b4,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.special-box p{
+margin-top:18px;
+font-size:1.1rem;
+line-height:2;
+}
+
+@keyframes specialGlow{
+from{
+box-shadow:0 0 25px rgba(255,0,128,0.3);
+}
+to{
+box-shadow:0 0 60px rgba(255,215,0,0.5);
+}
+}
+
+/* COUNTDOWN */
+
+.countdown{
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+margin-top:60px;
+}
+
+.time-box{
+width:130px;
+height:130px;
+border-radius:28px;
+background:
+linear-gradient(135deg,#ff0080,#7928ca,#2afadf);
+background-size:300% 300%;
+animation:cardGradient 6s ease infinite, pulseCountdown 8s ease-in-out infinite alternate;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+box-shadow:0 10px 35px rgba(255,0,128,0.5);
+}
+
+@keyframes pulseCountdown{
+0%{transform:scale(1);}
+100%{transform:scale(1.02);}
+}
+
+.time-box h1{
+font-family:'Cinzel',serif;
+font-size:2.5rem;
+}
+
+.time-box p{
+font-size:1rem;
+margin-top:6px;
+}
+
+/* LOCATION */
+
+.location-title{
+text-align:center;
+font-size:3rem;
+font-family:'Great Vibes',cursive;
+margin-top:70px;
+margin-bottom:25px;
+background:linear-gradient(to right,#ffd700,#ff69b4,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* MAP */
+
+.map-container{
+border-radius:30px;
+overflow:hidden;
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+animation:mapLift 10s ease-in-out infinite alternate;
+}
+
+@keyframes mapLift{
+0%{transform:translateY(0);}
+100%{transform:translateY(-6px);}
+}
+
+iframe{
+width:100%;
+height:500px;
+border:0;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:100px;
+padding:50px 20px;
+text-align:center;
+background:
+linear-gradient(135deg,#ff0080,#7928ca,#2afadf);
+background-size:300% 300%;
+animation:cardGradient 6s ease infinite, footerGlow 12s ease-in-out infinite alternate;
+}
+
+@keyframes footerGlow{
+0%{box-shadow:0 0 40px rgba(255,255,255,0.08);}
+100%{box-shadow:0 0 55px rgba(255,255,255,0.16);}
+}
+
+footer h2{
+font-family:'Great Vibes',cursive;
+font-size:3rem;
+}
+
+footer p{
+margin-top:15px;
+font-size:1.1rem;
+}
+
+/* FADE */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width:992px){
+
+.hero h1{
+font-size:4rem;
+}
+
+.hero h2{
+font-size:2rem;
+}
+
+}
+
+@media(max-width:768px){
+
+.section{
+padding:70px 5%;
+}
+
+.hero{
+padding:60px 15px;
+}
+
+.hero h1{
+font-size:2.8rem;
+letter-spacing:2px;
+}
+
+.hero h2{
+font-size:1.5rem;
+}
+
+.hero p{
+font-size:1rem;
+line-height:1.8;
+}
+
+.hero-btn{
+padding:14px 30px;
+font-size:0.95rem;
+}
+
+.section-title{
+font-size:2.3rem;
+}
+
+.glass-card{
+padding:25px 15px;
+}
+
+.flip-card{
+height:190px;
+}
+
+.flip-front h2{
+font-size:2.8rem;
+}
+
+.flip-front h3{
+font-size:1.2rem;
+}
+
+.flip-back h3{
+font-size:1.2rem;
+}
+
+.special-box h1{
+font-size:2.2rem;
+}
+
+.special-box h2{
+font-size:2rem;
+}
+
+.special-box p{
+font-size:0.95rem;
+}
+
+.time-box{
+width:100px;
+height:100px;
+}
+
+.time-box h1{
+font-size:1.8rem;
+}
+
+.time-box p{
+font-size:0.85rem;
+}
+
+.location-title{
+font-size:2.2rem;
+}
+
+iframe{
+height:320px;
+}
+
+footer h2{
+font-size:2.2rem;
+}
+
+footer p{
+font-size:0.95rem;
+}
+
+}
+
+@media(max-width:480px){
+
+.hero h1{
+font-size:2.3rem;
+}
+
+.hero h2{
+font-size:1.3rem;
+}
+
+.time-box{
+width:85px;
+height:85px;
+}
+
+.time-box h1{
+font-size:1.5rem;
+}
+
+.time-box p{
+font-size:0.75rem;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- STARS -->
+
+<div class="stars">
+<span style="left:10%; animation-duration:8s;"></span>
+<span style="left:20%; animation-duration:12s;"></span>
+<span style="left:30%; animation-duration:10s;"></span>
+<span style="left:40%; animation-duration:14s;"></span>
+<span style="left:50%; animation-duration:9s;"></span>
+<span style="left:60%; animation-duration:11s;"></span>
+<span style="left:70%; animation-duration:13s;"></span>
+<span style="left:80%; animation-duration:7s;"></span>
+<span style="left:90%; animation-duration:15s;"></span>
+</div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content reveal-item reveal-up reveal-delay-1">
+
+<h1>🏠 Housewarming</h1>
+
+<h2>புதுமனை புகுவிழா</h2>
+
+<p>
+With the divine blessings of God,<br>
+we warmly invite you and your family<br>
+to celebrate our new beginning.
+</p>
+
+<p style="font-family:'Noto Sans Tamil'; margin-top:20px;">
+இறைவன் அருளால் நடைபெறும் எங்கள் புதிய இல்ல விழாவிற்கு தங்களை அன்புடன் வரவேற்கிறோம்
+</p>
+
+<a href="#details" class="hero-btn">
+View Invitation
+</a>
+
+</div>
+
+</section>
+
+<!-- DETAILS -->
+
+<section class="section" id="details">
+
+<h1 class="section-title reveal-item reveal-up reveal-delay-1">✨ Event Details ✨</h1>
+
+<div class="glass-card reveal-item reveal-up reveal-delay-2">
+
+<div class="info-grid">
+
+<div class="flip-card">
+<div class="flip-inner">
+
+<div class="flip-front">
+<h2>📅</h2>
+<h3>Date</h3>
+</div>
+
+<div class="flip-back">
+<h3>11 - 06 - 2026</h3>
+<p>Thursday</p>
+</div>
+
+</div>
+</div>
+
+<div class="flip-card">
+<div class="flip-inner">
+
+<div class="flip-front">
+<h2>⏰</h2>
+<h3>Muhurtham</h3>
+</div>
+
+<div class="flip-back">
+<h3>Morning Function</h3>
+<p>5.00 Am - 6.00 Am</p>
+</div>
+
+</div>
+</div>
+
+<div class="flip-card">
+<div class="flip-inner">
+
+<div class="flip-front">
+<h2>📍</h2>
+<h3>Venue</h3>
+</div>
+
+<div class="flip-back">
+<h3>Naagathamman Kovil</h3>
+<p>Mullaivoyal Medu</p>
+</div>
+
+</div>
+</div>
+
+<div class="flip-card">
+<div class="flip-inner">
+
+<div class="flip-front">
+<h2>🙏</h2>
+<h3>Invitation</h3>
+</div>
+
+<div class="flip-back">
+<h3>Your Presence</h3>
+<p>Is Our Happiness ❤️</p>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<!-- SPECIAL MESSAGE -->
+
+<div class="special-box reveal-item reveal-up reveal-delay-2">
+
+<h2>💖 Best Regards 💖</h2>
+
+<h1>Kumar & Family</h1>
+
+<p>
+We are eagerly waiting for your gracious presence
+to celebrate this beautiful occasion with us.
+</p>
+
+<p style="font-family:'Noto Sans Tamil'; margin-top:15px;">
+தங்களின் வருகையை ஆவலுடன் எதிர்பார்க்கிறோம் 🙏
+</p>
+
+</div>
+
+<!-- COUNTDOWN -->
+
+<div class="countdown reveal-item reveal-up reveal-delay-3">
+
+<div class="time-box">
+<h1 id="days">00</h1>
+<p>Days</p>
+</div>
+
+<div class="time-box">
+<h1 id="hours">00</h1>
+<p>Hours</p>
+</div>
+
+<div class="time-box">
+<h1 id="minutes">00</h1>
+<p>Minutes</p>
+</div>
+
+<div class="time-box">
+<h1 id="seconds">00</h1>
+<p>Seconds</p>
+</div>
+
+</div>
+
+<!-- LOCATION TITLE -->
+
+<h1 class="location-title reveal-item reveal-up reveal-delay-1">
+📍 Location / இடம்
+</h1>
+
+<!-- MAP -->
+
+<div class="map-container reveal-item reveal-up reveal-delay-2">
+
+<iframe 
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2183.7819898600615!2d80.13195515305861!3d13.467626369565611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4d830eb6825947%3A0x2496ef942706787e!2sNaagathamman%20kovil%20%2Cmullaivoyal%20medu!5e0!3m2!1sen!2sin!4v1780068447590!5m2!1sen!2sin"
+allowfullscreen=""
+loading="lazy">
+</iframe>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="reveal-item reveal-up reveal-delay-2">
+
+<h2>🙏 Thank You 🙏</h2>
+
+<p>
+We are waiting for your coming ❤️
+</p>
+
+<p style="font-family:'Noto Sans Tamil'; margin-top:10px;">
+நன்றி 🙏
+</p>
+
+</footer>
+
+<script>
+
+const eventDate = new Date("June 11, 2026 05:00:00").getTime();
+
+setInterval(function(){
+
+const now = new Date().getTime();
+
+const gap = eventDate - now;
+
+const days = Math.floor(gap / (1000*60*60*24));
+
+const hours = Math.floor((gap % (1000*60*60*24)) / (1000*60*60));
+
+const minutes = Math.floor((gap % (1000*60*60)) / (1000*60));
+
+const seconds = Math.floor((gap % (1000*60)) / 1000);
+
+document.getElementById("days").innerHTML = days;
+document.getElementById("hours").innerHTML = hours;
+document.getElementById("minutes").innerHTML = minutes;
+document.getElementById("seconds").innerHTML = seconds;
+
+},1000);
+
+document.body.classList.add('animate-scroll');
+
+const revealItems = document.querySelectorAll('.reveal-item');
+const revealObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+revealItems.forEach(item => revealObserver.observe(item));
+
+</script>
+
+</body>
+</html>
